@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion } from "motion/react";
 import { useInView } from "./use-in-view";
 import { Code, Palette, Rocket } from "lucide-react";
@@ -35,18 +36,15 @@ export default function About() {
                     <h2 className="text-4xl md:text-5xl mb-4 text-emerald-400">About Me</h2>
                     <div className="w-20 h-1 bg-emerald-400 mb-12"></div>
 
-                    <p className="text-zinc-400 mb-8 max-w-3xl">
-                        Detail-oriented software engineer with a strong foundation in programming, software development, and database management.
-                        Skiled in HTML, CSS, JavaScript, and modern frameworks with experience in building applications and managing data models.
-                        Recognized for problem-solving ability, analytical thinking, and attention to detail in developing efficient and reliable solutions.
-                        Colaborative team player with effective communication skils, adaptability in fast-paced environments, and a commitment to
-                        continuous learning and improvement. Dedicated to delivering high-quality software that meets user needs and organizational
-                        goals.
+                    <p className="text-zinc-400 mb-8 max-w-3xl text-justify">
+                        I’m a Software Engineer focused on building clean, efficient, and user-friendly applications.
+                        I specialize in HTML, CSS, JavaScript, and modern frameworks, with a solid background in database management.
+                        I enjoy turning complex problems into simple, reliable code. I’m a collaborative team player who values clear communication and
+                        continuous learning. My goal is always to deliver high-quality software that solves real-world problems
                     </p>
 
-                    <p className="text-zinc-400 mb-12 max-w-3xl">
-                        When I'm not coding, you can find me exploring new technologies, contributing to
-                        open source projects, or enjoying a good cup of coffee while sketching out new ideas.
+                    <p className="text-zinc-400 mb-12 max-w-3xl text-justify">
+                        Outside of work, I enjoy exploring new tech, contributing to open source, or sketching out new ideas over a cup of coffee.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
