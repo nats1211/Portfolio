@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion, AnimatePresence } from "motion/react";
 import { useInView } from "./use-in-view";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
@@ -243,7 +244,7 @@ export default function Contact() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="mt-24 pt-8 border-t border-zinc-800 text-center text-zinc-500"
             >
-                <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Tristan James. All rights reserved.</p>
             </motion.div>
         </section>
     );

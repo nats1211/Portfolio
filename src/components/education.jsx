@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion } from "motion/react";
 import { useInView } from "./use-in-view";
 import { GraduationCap, Award, BookOpen } from "lucide-react";
