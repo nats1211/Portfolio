@@ -8,28 +8,19 @@ export default function Skills() {
     const skillCategories = [
         {
             category: "Frontend",
-            skills: [
-                { name: "React", level: 90 },
-                { name: "JavaScript", level: 85 },
-                { name: "Tailwind CSS", level: 95 },
-                { name: "Next.js", level: 80 },
-            ],
+            skills: ["React", "Tailwind CSS", "Next.js", "DaisyUI", "Shad CN", "HTML", "CSS"],
         },
         {
             category: "Backend",
-            skills: [
-                { name: "Node.js", level: 85 },
-                { name: "Python", level: 75 },
-                { name: "PostgreSQL", level: 80 },
-            ],
+            skills: ["Node.js", "Python", "PostgreSQL"],
+        },
+        {
+            category: "Languages",
+            skills: ["JavaScript", "TypeScript", "SQL"],
         },
         {
             category: "Tools & Others",
-            skills: [
-                { name: "Git", level: 90 },
-                { name: "Claude", level: 75 },
-                { name: "Figma", level: 85 },
-            ],
+            skills: ["Git", "Claude", "Figma"],
         },
     ];
 
@@ -51,26 +42,33 @@ export default function Skills() {
                                 key={category.category}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                                transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-                                className="p-6 bg-zinc-900 rounded-lg border border-zinc-800"
+                                transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
+                                className="p-6 bg-zinc-900 rounded-lg border border-zinc-800 hover:border-emerald-400/30 transition-colors duration-300"
                             >
-                                <h3 className="text-xl mb-6 text-zinc-100">{category.category}</h3>
-                                <div className="space-y-4">
-                                    {category.skills.map((skill) => (
-                                        <div key={skill.name}>
-                                            <div className="flex justify-between mb-2">
-                                                <span className="text-zinc-400">{skill.name}</span>
-                                                <span className="text-zinc-500">{skill.level}%</span>
-                                            </div>
-                                            <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
-                                                <motion.div
-                                                    initial={{ width: 0 }}
-                                                    animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                                                    transition={{ duration: 1, delay: categoryIndex * 0.2 + 0.3 }}
-                                                    className="h-full bg-emerald-400 rounded-full"
-                                                ></motion.div>
-                                            </div>
-                                        </div>
+                                <div className="flex items-center gap-2 mb-6">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    <h3 className="text-xl text-zinc-100">{category.category}</h3>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2">
+                                    {category.skills.map((skill, skillIndex) => (
+                                        <motion.span
+                                            key={skill}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={
+                                                isInView
+                                                    ? { opacity: 1, scale: 1 }
+                                                    : { opacity: 0, scale: 0.9 }
+                                            }
+                                            transition={{
+                                                duration: 0.4,
+                                                delay: categoryIndex * 0.15 + skillIndex * 0.06 + 0.2,
+                                            }}
+                                            whileHover={{ y: -2 }}
+                                            className="px-3 py-1.5 text-sm text-zinc-300 bg-zinc-800/60 border border-zinc-700 rounded-full hover:border-emerald-400/50 hover:text-emerald-400 hover:bg-emerald-400/5 transition-colors duration-200 cursor-default"
+                                        >
+                                            {skill}
+                                        </motion.span>
                                     ))}
                                 </div>
                             </motion.div>

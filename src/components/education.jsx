@@ -11,7 +11,7 @@ export default function Education() {
             icon: GraduationCap,
             degree: "Bachelor of Science in Information Technology",
             institution: "STI College - Malolos",
-            period: "2021 - Current",
+            period: "2021 - 2026",
             description: "Focus on software engineering and web development.",
         },
         {

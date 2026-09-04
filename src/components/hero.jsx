@@ -22,11 +22,11 @@ export default function Hero() {
                         Hi, I'm <span className="text-emerald-400">Tristan James Burgos</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-zinc-400 mb-8">
-                        Full Stack Developer & Creative Designer
+                        Junior Software Engineer | Web Developer | Tech Enthusiast
                     </p>
                     <p className="text-zinc-500 max-w-2xl mx-auto mb-12">
-                        I craft beautiful and functional web experiences with modern technologies.
-                        Passionate about clean code and intuitive design.
+                        I developed modern, responsive, and user-friendly web applications using React.js, Next.js, PostgreSQL, and Odoo.
+                        I am passionate about creating efficient and scalable solutions that enhance user experiences.
                     </p>
 
                     <div className="flex items-center justify-center gap-4 mb-12">

@@ -37,10 +37,10 @@ export default function About() {
                     <div className="w-20 h-1 bg-emerald-400 mb-12"></div>
 
                     <p className="text-zinc-400 mb-8 max-w-3xl text-justify">
-                        I’m a Software Engineer focused on building clean, efficient, and user-friendly applications.
-                        I specialize in HTML, CSS, JavaScript, and modern frameworks, with a solid background in database management.
-                        I enjoy turning complex problems into simple, reliable code. I’m a collaborative team player who values clear communication and
-                        continuous learning. My goal is always to deliver high-quality software that solves real-world problems
+                        Information Technology graduate with internship experience in web development,
+                        full-stack development, and business application customization. Experienced in React.js,
+                        Next.js, PostgreSQL, and Odoo. Skilled in building responsive web applications,
+                        designing databases, and collaborating with teams to deliver software solutions.
                     </p>
 
                     <p className="text-zinc-400 mb-12 max-w-3xl text-justify">
