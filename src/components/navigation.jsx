@@ -34,7 +34,7 @@ export default function Navigation() {
                         onClick={() => scrollToSection("hero")}
                         className="text-xl font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
                     >
-                        Portfolio
+                        NatsDev
                     </button>
 
                     {/* Desktop Navigation */}
