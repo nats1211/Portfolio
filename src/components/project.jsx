@@ -14,6 +14,12 @@ export default function Projects() {
             tags: ["React", "Node.js", "PostgreSQL", "DaisyUI"],
             github: "https://github.com/nats1211/LMS",
         },
+        {
+            title: "Job Application Tracker",
+            description: "A system that can help you manage and track you job hunting journey.",
+            tags: ["TypeScript", "React.js", "Next.js", "PostgreSQL", "Neon", "Drizzle", "Clerk"],
+            link: "https://job-application-tracker-eight-dun.vercel.app"
+        }
     ];
 
     return (
@@ -63,7 +69,7 @@ export default function Projects() {
                                         <Github size={20} />
                                     </a>
                                     <a
-                                        href={project.live}
+                                        href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-zinc-400 hover:text-emerald-400 transition-colors"
