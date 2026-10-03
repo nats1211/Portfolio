@@ -1,69 +1,34 @@
-/* eslint-disable no-unused-vars */
-import { motion } from "motion/react";
-import { useInView } from "./use-in-view";
-import { Code, Palette, Rocket } from "lucide-react";
+import Card from "./ui/card.jsx";
+import { profile } from "../data/profile.js";
 
-export default function About() {
-    const { ref, isInView } = useInView();
-
-    const features = [
-        {
-            icon: Code,
-            title: "Clean Code",
-            description: "Writing maintainable and scalable code following best practices",
-        },
-        {
-            icon: Palette,
-            title: "Modern Design",
-            description: "Creating beautiful interfaces with attention to detail",
-        },
-        {
-            icon: Rocket,
-            title: "Fast Performance",
-            description: "Optimizing for speed and efficiency in every project",
-        },
-    ];
-
-    return (
-        <section id="about" className="py-24 px-6">
-            <div className="container mx-auto max-w-6xl">
-                <motion.div
-                    ref={ref}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h2 className="text-4xl md:text-5xl mb-4 text-emerald-400">About Me</h2>
-                    <div className="w-20 h-1 bg-emerald-400 mb-12"></div>
-
-                    <p className="text-zinc-400 mb-8 max-w-3xl text-justify">
-                        Information Technology graduate with internship experience in web development,
-                        full-stack development, and business application customization. Experienced in React.js,
-                        Next.js, PostgreSQL, and Odoo. Skilled in building responsive web applications,
-                        designing databases, and collaborating with teams to deliver software solutions.
-                    </p>
-
-                    <p className="text-zinc-400 mb-12 max-w-3xl text-justify">
-                        Outside of work, I enjoy exploring new tech, contributing to open source, or sketching out new ideas over a cup of coffee.
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={feature.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                                transition={{ duration: 0.6, delay: index * 0.2 }}
-                                className="p-6 bg-zinc-900 rounded-lg border border-zinc-800 hover:border-emerald-400/50 transition-colors"
-                            >
-                                <feature.icon className="text-emerald-400 mb-4" size={32} />
-                                <h3 className="text-xl mb-2">{feature.title}</h3>
-                                <p className="text-zinc-500">{feature.description}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
+function About() {
+  return (
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="px-4 py-16 sm:px-6 sm:py-20"
+    >
+      <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[1fr_16rem]">
+        <div>
+          <h2 id="about-heading" className="mb-5 text-3xl font-semibold tracking-tight">
+            About
+          </h2>
+          <p className="mb-4 max-w-[65ch] text-muted">{profile.bio}</p>
+          <p className="max-w-[65ch] text-muted">{profile.education}</p>
+        </div>
+        <Card as="figure" className="mx-auto w-full max-w-64 p-3">
+          <img
+            src={profile.photoSrc}
+            alt={profile.photoAlt}
+            width="512"
+            height="640"
+            loading="lazy"
+            className="aspect-4/5 w-full rounded-md object-cover"
+          />
+        </Card>
+      </div>
+    </section>
+  );
 }
+
+export default About;

@@ -1,79 +1,105 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 
-export default function Navigation() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+const navItems = [
+  ["About", "about"],
+  ["Skills", "skills"],
+  ["Projects", "projects"],
+  ["Contact", "contact"],
+];
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+const linkClassName =
+  "rounded-sm text-muted transition-colors hover:text-accent";
 
-    const navItems = ["About", "Skills", "Projects", "Education", "Contact"];
+function ThemeToggle({ theme, onToggleTheme, className = "" }) {
+  const isDark = theme === "dark";
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId.toLowerCase());
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-            setIsOpen(false);
-        }
+  return (
+    <button
+      type="button"
+      onClick={onToggleTheme}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      title={`Switch to ${isDark ? "light" : "dark"} mode`}
+      className={`rounded-md p-2 text-muted transition-colors hover:bg-surface hover:text-foreground ${className}`}
+    >
+      {isDark ? <Sun aria-hidden="true" size={20} /> : <Moon aria-hidden="true" size={20} />}
+    </button>
+  );
+}
+
+function Navigation({ theme, onToggleTheme }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsOpen(false);
     };
 
-    return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800" : "bg-transparent"
-                }`}
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen]);
+
+  return (
+    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <a
+          href="#hero"
+          onClick={() => setIsOpen(false)}
+          className="rounded-sm font-semibold text-foreground"
         >
-            <div className="container mx-auto px-6 py-4">
-                <div className="flex items-center justify-between">
-                    <button
-                        onClick={() => scrollToSection("hero")}
-                        className="text-xl font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
-                    >
-                        NatsDev
-                    </button>
+          Tristan Burgos
+        </a>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-8">
-                        {navItems.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => scrollToSection(item)}
-                                className="text-zinc-400 hover:text-emerald-400 transition-colors"
-                            >
-                                {item}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-zinc-400 hover:text-emerald-400"
-                    >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-                </div>
-
-                {/* Mobile Navigation */}
-                {isOpen && (
-                    <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-                        {navItems.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => scrollToSection(item)}
-                                className="text-zinc-400 hover:text-emerald-400 transition-colors text-left"
-                            >
-                                {item}
-                            </button>
-                        ))}
-                    </div>
-                )}
-            </div>
+        <nav aria-label="Primary navigation" className="hidden items-center gap-6 md:flex">
+          {navItems.map(([label, id]) => (
+            <a key={id} href={`#${id}`} className={linkClassName}>
+              {label}
+            </a>
+          ))}
         </nav>
-    );
+
+        <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} />
+          </div>
+          <ThemeToggle
+            theme={theme}
+            onToggleTheme={onToggleTheme}
+            className="md:hidden"
+          />
+          <button
+            type="button"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsOpen((open) => !open)}
+            className="rounded-md p-2 text-muted transition-colors hover:bg-surface hover:text-foreground md:hidden"
+          >
+            {isOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}
+          </button>
+        </div>
+      </div>
+
+      <nav
+        id="mobile-navigation"
+        aria-label="Mobile primary navigation"
+        className={`${isOpen ? "flex" : "hidden"} flex-col gap-1 border-t border-border px-4 py-3 md:hidden sm:px-6`}
+      >
+        {navItems.map(([label, id]) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            onClick={() => setIsOpen(false)}
+            className={`${linkClassName} px-2 py-2`}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    </header>
+  );
 }
+
+export default Navigation;

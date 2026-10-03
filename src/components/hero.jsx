@@ -1,81 +1,36 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from "motion/react";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import Button from "./ui/button.jsx";
+import Reveal from "./reveal.jsx";
+import { profile } from "../data/profile.js";
 
-export default function Hero() {
-    const scrollToAbout = () => {
-        const element = document.getElementById("about");
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
-    return (
-        <section id="hero" className="min-h-screen flex items-center justify-center px-6 pt-20">
-            <div className="container mx-auto text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h1 className="text-5xl md:text-7xl mb-4 text-zinc-100">
-                        Hi, I'm <span className="text-emerald-400">Tristan James Burgos</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-zinc-400 mb-8">
-                        Junior Software Engineer | Web Developer | Tech Enthusiast
-                    </p>
-                    <p className="text-zinc-500 max-w-2xl mx-auto mb-12">
-                        I developed modern, responsive, and user-friendly web applications using React.js, Next.js, PostgreSQL, and Odoo.
-                        I am passionate about creating efficient and scalable solutions that enhance user experiences.
-                    </p>
-
-                    <div className="flex items-center justify-center gap-4 mb-12">
-                        <a
-                            href="https://github.com/nats1211"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors border border-zinc-800"
-                        >
-                            <Github size={24} />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/tristan-james-burgos-5165b923a/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors border border-zinc-800"
-                        >
-                            <Linkedin size={24} />
-                        </a>
-                        <a
-                            href="mailto:burgostristan96@gmail.com"
-                            className="p-3 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors border border-zinc-800"
-                        >
-                            <Mail size={24} />
-                        </a>
-                    </div>
-
-                    <button
-                        onClick={scrollToAbout}
-                        className="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-zinc-950 rounded-lg transition-colors"
-                    >
-                        View My Work
-                    </button>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-                >
-                    <button
-                        onClick={scrollToAbout}
-                        className="text-zinc-400 hover:text-emerald-400 transition-colors animate-bounce"
-                    >
-                        <ArrowDown size={32} />
-                    </button>
-                </motion.div>
-            </div>
-        </section>
-    );
+function Hero() {
+  return (
+    <section
+      id="hero"
+      aria-labelledby="hero-heading"
+      className="px-4 pb-16 pt-20 sm:px-6 sm:pb-24 sm:pt-28"
+    >
+      <Reveal className="mx-auto max-w-5xl">
+        <p className="mb-3 font-medium text-accent">{profile.role}</p>
+        <h1
+          id="hero-heading"
+          className="mb-5 max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl"
+        >
+          {profile.name}
+        </h1>
+        <p className="mb-8 max-w-[65ch] text-lg leading-relaxed text-muted">
+          {profile.valueStatement}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Button as="a" href="#projects">
+            View projects
+          </Button>
+          <Button as="a" href="#contact" variant="secondary">
+            Contact
+          </Button>
+        </div>
+      </Reveal>
+    </section>
+  );
 }
+
+export default Hero;
