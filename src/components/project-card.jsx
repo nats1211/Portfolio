@@ -37,7 +37,7 @@ function ProjectCard({ project }) {
               Live site <ExternalLink aria-hidden="true" size={16} />
             </a>
           ) : (
-            <span className="text-muted">Live site — TODO</span>
+            null
           )}
           {project.githubUrl ? (
             <a
@@ -49,7 +49,7 @@ function ProjectCard({ project }) {
               GitHub <Github aria-hidden="true" size={16} />
             </a>
           ) : (
-            <span className="text-muted">GitHub — TODO</span>
+            null
           )}
         </div>
       </div>

@@ -26,6 +26,6 @@ export const projects = [
       "Clerk",
     ],
     liveUrl: "https://job-application-tracker-eight-dun.vercel.app",
-    githubUrl: "",
+    githubUrl: "https://github.com/nats1211/Job-Application-Tracker",
   },
 ];
